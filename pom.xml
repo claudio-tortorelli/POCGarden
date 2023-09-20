@@ -22,4 +22,8 @@
         </dependency>
     </dependencies>
     <name>POCGarden</name>
+    <scm>
+        <connection>scm:git:git@https://github.com/claudio-tortorelli/POCGarden.git</connection>
+        <tag>HEAD</tag>
+    </scm>
 </project>
