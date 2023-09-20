@@ -1,2 +1,2 @@
 # POCGarden
-Il giardino dei ProofOfConcepgt
+Il giardino dei ProofOfConcept
