@@ -6,24 +6,21 @@ package claudiosoft.pocbase;
  */
 public class CmdLineArgument {
 
-    private final String label;
-
     private String value = null;
     private int valueInt = Integer.MIN_VALUE;
     private int valueBool = Integer.MIN_VALUE;
 
     private final boolean required;
 
-    public CmdLineArgument(String label) {
-        this(label, "", false);
+    public CmdLineArgument() {
+        this("", false);
     }
 
-    public CmdLineArgument(String label, Object defValue) {
-        this(label, defValue, false);
+    public CmdLineArgument(Object defValue) {
+        this(defValue, false);
     }
 
-    public CmdLineArgument(String label, Object defValue, boolean required) {
-        this.label = label;
+    public CmdLineArgument(Object defValue, boolean required) {
         if (defValue.getClass().isInstance(String.class)) {
             this.value = (String) defValue;
         } else if (defValue.getClass().isInstance(Integer.class)) {
@@ -35,10 +32,6 @@ public class CmdLineArgument {
             }
         }
         this.required = required;
-    }
-
-    public String getLabel() {
-        return label;
     }
 
     public String getValue() throws POCException {
@@ -91,9 +84,9 @@ public class CmdLineArgument {
 
     private boolean hasValue() {
         if (value == null && valueInt == Integer.MIN_VALUE && valueBool == Integer.MIN_VALUE) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

@@ -1,6 +1,7 @@
 package claudiosoft.pocbase;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -22,7 +23,7 @@ public class CmdLineParams {
 
     }
 
-    public void parseArgs(List<CmdLineArgument> initArgs, String[] args) throws POCException {
+    public void parseArgs(HashMap<String, CmdLineArgument> initArgs, String[] args) throws POCException {
         for (String arg : args) {
             if (arg == null || arg.isEmpty()) {
                 continue;
@@ -38,21 +39,20 @@ public class CmdLineParams {
             String value = splitted[1].trim();
 
             boolean parsed = false;
-            for (CmdLineArgument curPocArg : initArgs) {
-                if (!curPocArg.getLabel().trim().equalsIgnoreCase(param)) {
+            for (String label : initArgs.keySet()) {
+                if (!label.trim().equalsIgnoreCase(param)) {
                     continue;
                 }
                 parsed = true;
-
                 try {
-                    curPocArg.setValueInt(Integer.parseInt(value));
+                    initArgs.get(label).setValueInt(Integer.parseInt(value));
                 } catch (NumberFormatException ex) {
                     if (value.equalsIgnoreCase("true")) {
-                        curPocArg.setValueBool(true);
+                        initArgs.get(label).setValueBool(true);
                     } else if (value.equalsIgnoreCase("false")) {
-                        curPocArg.setValueBool(false);
+                        initArgs.get(label).setValueBool(false);
                     } else {
-                        curPocArg.setValue(value);
+                        initArgs.get(label).setValue(value);
                     }
                 }
                 break;
@@ -61,9 +61,9 @@ public class CmdLineParams {
                 throw new POCException("unsupported input parameter: " + param);
             }
         }
-        for (CmdLineArgument curPocArg : initArgs) {
-            if (curPocArg.isMissing()) {
-                throw new POCException("missing required parameter: " + curPocArg.getLabel());
+        for (Map.Entry<String, CmdLineArgument> curPocArg : initArgs.entrySet()) {
+            if (curPocArg.getValue().isMissing()) {
+                throw new POCException("missing required parameter: " + curPocArg.getKey());
             }
         }
     }

@@ -9,8 +9,8 @@ import claudiosoft.pocbase.CmdLineArgument;
 import claudiosoft.pocbase.CmdLineParams;
 import claudiosoft.pocbase.POCException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -20,19 +20,34 @@ public class TestBase extends BaseJUnitTest {
 
     @Test
     public void t01ParseParams() throws InterruptedException, IOException, POCException {
-        List<CmdLineArgument> initArgs = new ArrayList<>();
-        initArgs.add(new CmdLineArgument("test"));
-        initArgs.add(new CmdLineArgument("test2", true));
-        initArgs.add(new CmdLineArgument("path"));
-        initArgs.add(new CmdLineArgument("num", 1));
+        HashMap<String, CmdLineArgument> initArgs = new HashMap<>();
+        initArgs.put("test", new CmdLineArgument());
+        initArgs.put("test2", new CmdLineArgument("", true));
+        initArgs.put("path", new CmdLineArgument("path"));
+        initArgs.put("num", new CmdLineArgument(1));
 
         String[] args = new String[4];
         args[0] = "test=true";
-        args[1] = "test2";
         args[2] = "path=c:\\canc";
         args[3] = "num=2";
 
-        CmdLineParams.get().parseArgs(initArgs, args);
+        boolean missing = false;
+        try {
+            CmdLineParams.get().parseArgs(initArgs, args);
+        } catch (POCException ex) {
+            ex.printStackTrace();
+            missing = true;
+        }
+        Assert.assertTrue(missing);
+
+        Assert.assertTrue(initArgs.containsKey("test"));
+        Assert.assertTrue(initArgs.get("test").getValueBool() == true);
+
+        Assert.assertTrue(initArgs.containsKey("path"));
+        Assert.assertTrue(initArgs.get("path").getValue().equals("c:\\canc"));
+
+        Assert.assertTrue(initArgs.containsKey("num"));
+        Assert.assertTrue(initArgs.get("num").getValueInt() == 2);
 
     }
 
