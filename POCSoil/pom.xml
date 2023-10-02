@@ -8,17 +8,20 @@
     </parent>
     <artifactId>POCSoil</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>ReadableOTP</module>
+    </modules>
     <profiles>
         <profile>
-            <id>POCSample</id>
+            <id>ReadableOTP</id>
             <modules>
-                <module>POCSample</module>
+                <module>ReadableOTP</module>
             </modules>
         </profile>
         <profile>
             <id>All</id>
             <modules>
-                <module>POCSample</module>
+                <module>ReadableOTP</module>
             </modules>
         </profile>
     </profiles>
