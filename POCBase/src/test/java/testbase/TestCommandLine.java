@@ -1,10 +1,10 @@
 /**
- * JarBoxProject - https://github.com/claudio-tortorelli/JarBox/
  *
- * MIT License - 2021
+ *
  */
 package testbase;
 
+import claudiosoft.pocbase.BasicConsoleLogger;
 import claudiosoft.pocbase.CmdLineArgument;
 import claudiosoft.pocbase.CmdLineParams;
 import claudiosoft.pocbase.POCException;
@@ -16,7 +16,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestBase extends BaseJUnitTest {
+public class TestCommandLine extends BaseJUnitTest {
 
     @Test
     public void t01ParseParams() throws InterruptedException, IOException, POCException {
@@ -49,6 +49,18 @@ public class TestBase extends BaseJUnitTest {
         Assert.assertTrue(initArgs.containsKey("num"));
         Assert.assertTrue(initArgs.get("num").getValueInt() == 2);
 
+    }
+
+    @Test
+    public void t01BasicLogger() throws InterruptedException, IOException, POCException {
+        BasicConsoleLogger logger = BasicConsoleLogger.get();
+        logger.info("info message");
+        try {
+            int a = 0;
+            int b = 1 / a;
+        } catch (Exception ex) {
+            logger.error("error: " + ex.getMessage(), ex);
+        }
     }
 
 }

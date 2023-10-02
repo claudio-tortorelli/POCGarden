@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.RandomAccessFile;
 import java.net.JarURLConnection;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.channels.FileLock;
 import java.nio.charset.StandardCharsets;
@@ -80,6 +81,10 @@ public class BasicUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(BasicConstants.DATE_FORMAT);
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         return sdf.parse(date);
+    }
+
+    public static String getJarFolder() throws URISyntaxException {
+        return new File(BasicUtils.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getAbsolutePath();
     }
 
     public static void testLockFile(File testFile) throws POCException {
