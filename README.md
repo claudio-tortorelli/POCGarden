@@ -16,7 +16,19 @@ POCBase is a dependency of POCSoil, and POCSoil is the parent POM of each POC, w
 Moreover POCSoil defines which profiles must be built. 
 
 ## Building projects
-Executing a mvn clean install on POCGarden all sub project is built. But the POCSoil project build will fail without selecting right profile.
+Executing a mvn clean install on POCGarden all sub project is built. But the POCSoil project build will fail if any submodule folder isn't present.
 Into POCSoil's POM are defined modules that must be downloaded from a separate repository as subfolders.
-For each POC-module there is a profile with the same ID, so if the sources are present then is possible to build and test the POC by selecting the right profile to build.
+
+example:
+```
+...
+    <modules>
+        <!-- HERE ENABLE POC MODULES YOU WANT TO BUILD -->
+        <!-- EACH MODULE MUST BE PRESENT IN A SUBFOLDER -->
+        <module>ReadableOTP</module>
+        <module>Deck</module>
+    </modules>
+...
+```
+You need to comment or remove any module entry that you won't build.
 
