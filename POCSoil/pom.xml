@@ -9,22 +9,11 @@
     <artifactId>POCSoil</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <!-- HERE ENABLE POC MODULES YOU WANT TO BUILD -->
+        <!-- EACH MODULE MUST BE PRESENT IN A SUBFOLDER -->
         <module>ReadableOTP</module>
+        <module>Deck</module>
     </modules>
-    <profiles>
-        <profile>
-            <id>ReadableOTP</id>
-            <modules>
-                <module>ReadableOTP</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>All</id>
-            <modules>
-                <module>ReadableOTP</module>
-            </modules>
-        </profile>
-    </profiles>
     <dependencies>
         <dependency>
             <groupId>claudiosoft</groupId>
