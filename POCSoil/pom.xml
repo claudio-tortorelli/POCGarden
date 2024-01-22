@@ -13,6 +13,7 @@
         <!-- EACH MODULE MUST BE PRESENT IN A SUBFOLDER -->
         <module>ReadableOTP</module>
         <module>Deck</module>
+        <module>Today</module>
     </modules>
     <dependencies>
         <dependency>

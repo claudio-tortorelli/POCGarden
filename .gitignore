@@ -4,3 +4,17 @@ POCBase/target/
 POCSoil/target/
 /POCSoil/ReadableOTP/target/
 POCSoil/ReadableOTP/
+/POCSoil/Today/target/
+POCSoil/Today/.gitignore
+POCSoil/Today/LICENSE
+POCSoil/Today/README.md
+POCSoil/Today/src/main/java/claudiosoft/Today/Config.java
+POCSoil/Today/src/main/java/claudiosoft/Today/DailyTimeEngine.java
+POCSoil/Today/src/main/java/claudiosoft/Today/DT.java
+POCSoil/Today/src/main/java/claudiosoft/Today/Planner.java
+POCSoil/Today/src/main/java/claudiosoft/Today/Priority.java
+POCSoil/Today/src/main/java/claudiosoft/Today/ReportFactory.java
+POCSoil/Today/src/main/java/claudiosoft/Today/Task.java
+POCSoil/Today/src/main/java/claudiosoft/Today/Today.java
+POCSoil/Today/src/test/BaseJUnitTest.java
+POCSoil/Today/src/test/TestGeneration.java
