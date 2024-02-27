@@ -17,4 +17,4 @@ POCSoil/Today/src/main/java/claudiosoft/Today/ReportFactory.java
 POCSoil/Today/src/main/java/claudiosoft/Today/Task.java
 POCSoil/Today/src/main/java/claudiosoft/Today/Today.java
 POCSoil/Today/src/test/BaseJUnitTest.java
-POCSoil/Today/src/test/TestGeneration.java
+POCSoil/Today/src/test/TestEngine.java
