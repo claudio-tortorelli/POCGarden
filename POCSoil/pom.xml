@@ -12,8 +12,7 @@
         <!-- HERE ENABLE POC MODULES YOU WANT TO BUILD -->
         <!-- EACH MODULE MUST BE PRESENT IN A SUBFOLDER -->
         <module>ReadableOTP</module>
-        <module>Deck</module>
-        <module>Today</module>
+        <module>Deck</module>        
     </modules>
     <dependencies>
         <dependency>
